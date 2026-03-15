@@ -9,13 +9,6 @@ regulator with a trimmer potentiometer to deliver an adjustable
 gEDA, fabrication-ready gerbers included for
 [OSH Park](https://oshpark.com).
 
-Originally designed by [Shawn Nock](https://github.com/nocko)
-([upstream repo](https://github.com/nocko/tdcs)). This fork is
-maintained by [boinger](https://github.com/boinger).
-
-Licensed [CC-BY 3.0](https://creativecommons.org/licenses/by/3.0/)
-(see [LICENSE.txt](LICENSE.txt)).
-
 ## Disclaimer
 
 **This is an experimental device, not a medical device.** The authors
