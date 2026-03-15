@@ -113,7 +113,7 @@ count=0
 for pcbname in `ls .. |sed -n -e '/\.pcb/s/\.pcb$//p'`; do
     for layer in `seq 1 $MAX_GROUPS`; do
 	if [[ -e $pcbname/$pcbname.group$layer.gbr ]]; then
-	    if [[ `stat -c%s $pcbname/$pcbname.group$layer.gbr` -lt 2500 ]]; then
+	    if [[ $(wc -c < "$pcbname/$pcbname.group$layer.gbr") -lt 2500 ]]; then
 		layer_name=$(get_layer_name $pcbname/$pcbname.group$layer.gbr)
 		echo "WARNING: Layer '$layer_name' is probably empty"
 	    fi
