@@ -1,5 +1,14 @@
+# Editor backups
 *~
 *-
 *#
+
+# KiCad backup files
+*.kicad_sch-bak
+*.kicad_pcb-bak
+fp-info-cache
+*-backups/
+
+# gEDA backup files (historical)
 *bak*
 *.new.pcb

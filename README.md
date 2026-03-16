@@ -6,7 +6,7 @@ A complete, open-source hardware design for a transcranial direct
 current stimulation (tDCS) device. The board uses an LM334Z current
 regulator with a trimmer potentiometer to deliver an adjustable
 0.5-2 mA constant current through sponge electrodes. Designed in
-gEDA, fabrication-ready gerbers included for
+KiCad, fabrication-ready gerbers included for
 [OSH Park](https://oshpark.com).
 
 ## Disclaimer
@@ -19,11 +19,15 @@ understand the schematics before attempting anything.
 
 ## Getting Started
 
-**Prerequisites:** the [gEDA](http://www.geda-project.org/) suite
-(gschem, pcb, gsch2pcb, gnetlist).
+**Prerequisites:** [KiCad](https://www.kicad.org/) 9.0 or later.
 
-If you've never used gEDA before, start with this
-[tutorial](https://hobby-electrons.sourceforge.net/tutorials/gEDA/index.html).
+```bash
+# macOS
+brew install --cask kicad
+
+# Linux (Ubuntu/Debian)
+sudo apt install kicad
+```
 
 ```bash
 git clone https://github.com/boinger/tdcs
@@ -31,12 +35,31 @@ git clone https://github.com/boinger/tdcs
 
 ## Workflow
 
-1. Edit the schematic in `tdcs.sch` using **gschem**
-2. Run `gsch2pcb project`
-3. Follow gsch2pcb's instructions to insert new components
-4. Adjust the PCB layout using **pcb**
-5. Generate gerbers: `cd gerbers && ./generate-gerbers.sh`
-6. Generate BOM: `gnetlist -g bom -o bom.csv tdcs.sch`
+1. Open `tdcs.kicad_sch` in KiCad Schematic Editor — review/edit the circuit
+2. Open `tdcs.kicad_pcb` in KiCad PCB Editor
+3. **Tools → Update PCB from Schematic** to import components
+4. Place components and route traces (reference `board.png` for original layout)
+5. Run DRC (**Inspect → Design Rules Checker**)
+6. Generate gerbers: `cd gerbers && ./generate-gerbers.sh`
+
+### CLI Commands
+
+```bash
+# Export schematic as PDF
+kicad-cli sch export pdf -o tdcs-schematic.pdf tdcs.kicad_sch
+
+# Export BOM
+kicad-cli sch export bom -o bom.csv tdcs.kicad_sch
+
+# Export netlist
+kicad-cli sch export netlist -o board.net tdcs.kicad_sch
+
+# Run ERC (Electrical Rules Check)
+kicad-cli sch erc tdcs.kicad_sch
+
+# Generate gerbers (after PCB layout is complete)
+cd gerbers && ./generate-gerbers.sh
+```
 
 ## Getting the PCB Made
 
@@ -87,18 +110,13 @@ these designs.
 
 | Path | Purpose |
 |------|---------|
-| `tdcs.sch` | Main schematic (gschem) |
-| `tdcs.pcb` | Board layout (pcb) |
-| `project` | gsch2pcb config: schematics, footprint paths, output name |
-| `gafrc` | gschem config: custom symbol library paths |
-| `attribs` | BOM field template for gnetlist |
-| `bom.csv` | Bill of materials (auto-generated) |
-| `gschem-sym/` | Custom schematic symbols |
-| `packages/` | Custom PCB footprints |
+| `tdcs.kicad_sch` | Main schematic (KiCad Schematic Editor) |
+| `tdcs.kicad_pcb` | Board layout (KiCad PCB Editor) |
+| `tdcs.kicad_pro` | KiCad project file |
 | `gerbers/` | Gerber output + `generate-gerbers.sh` |
 | `gerbers/tdcs.zip` | Ready-to-upload zip for OSH Park |
 | `datasheets/` | Component datasheets |
-| `historical/` | Archived upstream blog posts and images |
+| `historical/` | Archived upstream blog posts, images, and gEDA design files |
 
 ## License
 
