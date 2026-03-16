@@ -1,3 +1,2 @@
 schematics tdcs.sch
-pcb-elements ./packages
 output-name tdcs

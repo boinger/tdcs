@@ -1,6 +1,5 @@
 v 20110115 2
 T 44900 45400 8 10 0 1 0 0 1
-footprint=0.1_inch_2pin
 C 45200 49400 1 0 0 lm334-1.sym
 {
 T 45200 49400 5 10 0 0 0 0 1
@@ -231,8 +230,6 @@ C 44200 50700 1 0 0 ground.sym
 C 42900 48500 1 270 0 ground.sym
 C 48700 51600 1 90 0 varistor-1.sym
 {
-T 47900 51700 5 10 0 0 90 0 1
-device=MOV
 T 47500 51900 5 10 0 0 90 0 1
 footprint=ACY300
 T 47050 51900 5 10 0 0 90 0 1
@@ -250,8 +247,6 @@ C 48700 52900 1 180 0 ground.sym
 C 50800 49700 1 90 0 ground.sym
 C 49400 49700 1 0 0 varistor-1.sym
 {
-T 49500 50500 5 10 0 0 0 0 1
-device=MOV
 T 49700 50900 5 10 0 0 0 0 1
 footprint=ACY300
 T 49700 51350 5 10 0 0 0 0 1
@@ -346,7 +341,7 @@ refdes=M1
 T 48775 52300 5 10 0 0 0 0 1
 symversion=1.0
 T 48100 51300 5 10 0 0 0 0 1
-amazon link=http://smile.amazon.com/dp/B006Z950I2
+amazon link=http://www.amazon.com/dp/B006Z950I2
 T 49200 51700 5 10 1 1 0 0 1
 value=0-2.0mA
 T 48100 51300 5 10 0 0 0 0 1
